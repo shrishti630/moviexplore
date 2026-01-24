@@ -11,44 +11,41 @@
   <body class="bg-[#0b1220] text-gray-200 font-sans">
     <!-- HEADER (from Home) -->
     <header
-      id="appHeader"
-      class="sticky top-0 z-50 bg-[rgba(11,18,32,0.9)] backdrop-blur-xl border-b border-white/10"
+      class="sticky top-0 z-[1000] bg-[rgba(11,18,32,0.85)] backdrop-blur-xl border-b border-white/10"
     >
       <div
-        class="max-w-[1400px] mx-auto px-10 py-4 flex items-center justify-between"
+        class="max-w-[1400px] mx-auto px-3 sm:px-6 lg:px-10 h-14 sm:h-16 flex items-center gap-4"
       >
         <!-- Logo -->
-        <div class="flex items-center gap-3 cursor-pointer">
+        <a href="/index.html" class="flex items-center gap-2 shrink-0">
           <div
-            class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-900 grid place-items-center font-bold"
+            class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-gradient-to-br from-blue-600 to-blue-900 grid place-items-center text-xs sm:text-sm font-bold"
           >
             MX
           </div>
-          <span class="text-sm font-semibold">MovieXplore</span>
-        </div>
+          <span class="text-xs sm:text-sm font-semibold whitespace-nowrap">
+            MovieXplore
+          </span>
+        </a>
 
-        <!-- Navigation -->
-        <nav class="flex gap-7 text-sm">
+        <!-- Nav -->
+        <nav
+          class="ml-auto flex items-center gap-4 sm:gap-6 text-xs sm:text-sm whitespace-nowrap overflow-x-auto scrollbar-hide"
+        >
           <a href="/index.html" class="text-gray-400 hover:text-white">
             Home
           </a>
 
-          <!-- ACTIVE PAGE -->
-          <a href="/pages/movies/movie.html" class="text-white relative">
+          <a href="/pages/movies/movie.html" class="text-white relative group">
             Movies
-            <span
-              class="absolute left-0 -bottom-1 h-[2px] w-full bg-blue-600"
-            ></span>
           </a>
 
           <a
             href="/pages/tvshows/tvshows.html"
             class="text-gray-400 hover:text-white"
-            >TV Shows</a
           >
-          <!-- <a href="../favorites/favorites.html" class="hover:text-white"
-            >Favorites</a
-          > -->
+            TV Shows
+          </a>
         </nav>
       </div>
     </header>
