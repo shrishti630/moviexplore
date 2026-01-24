@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Movies</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-[#0b1220] text-gray-200 font-sans">
+    <!-- HEADER (from Home) -->
+    <header
+      id="appHeader"
+      class="sticky top-0 z-50 bg-[rgba(11,18,32,0.9)] backdrop-blur-xl border-b border-white/10"
+    >
+      <div
+        class="max-w-[1400px] mx-auto px-10 py-4 flex items-center justify-between"
+      >
+        <!-- Logo -->
+        <div class="flex items-center gap-3 cursor-pointer">
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-900 grid place-items-center font-bold"
+          >
+            MX
+          </div>
+          <span class="text-sm font-semibold">MovieXplore</span>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex gap-7 text-sm">
+          <a href="../home/home.html" class="text-gray-400 hover:text-white">
+            Home
+          </a>
+
+          <!-- ACTIVE PAGE -->
+          <a href="../movies/movie.html" class="text-white relative">
+            Movies
+            <span
+              class="absolute left-0 -bottom-1 h-[2px] w-full bg-blue-600"
+            ></span>
+          </a>
+
+          <a
+            href="../tvshows/tvshows.html"
+            class="text-gray-400 hover:text-white"
+            >TV Shows</a
+          >
+          <!-- <a href="../favorites/favorites.html" class="hover:text-white"
+            >Favorites</a
+          > -->
+        </nav>
+      </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <div class="mt-10 mb-10 flex items-center justify-between px-10">
+      <!-- Title -->
+      <h1 class="text-2xl font-semibold">Movies</h1>
+
+      <!-- Search -->
+      <div class="flex gap-2 w-[360px]">
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Search movies or TV shows"
+          class="flex-1 px-3 py-2 bg-[#141c2f] border border-[#223a5e] text-sm text-white outline-none placeholder-gray-400 rounded-md"
+        />
+        <button
+          id="searchBtn"
+          class="px-4 py-2 bg-[#223a5e] hover:bg-[#2c4a78] text-white text-sm rounded-md"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+
+    <!-- pop-movies -->
+    <section class="px-10 py-8 mb-14 bg-[#0f172a]/60 rounded-2xl">
+      <h2 class="text-lg font-medium mb-4 flex items-center gap-4">
+        <span>Popular Movies</span>
+        <a
+          href="../popularmovies/popularmovies.html"
+          class="text-sm text-gray-400 hover:text-white"
+        >
+          View All →
+        </a>
+      </h2>
+
+      <div id="popularMovies" class="flex gap-5 overflow-x-auto pb-2"></div>
+    </section>
+
+    <!-- SECTION DIVIDER -->
+    <div class="mx-10 my-12 border-t border-white/10"></div>
+    <h2 class="px-10 mb-4 text-lg font-medium text-gray-300">Browse Movies</h2>
+
+    <!-- MOVIES GRID -->
+    <main
+      id="movies"
+      class="px-10 pb-16 grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-6"
+    ></main>
+
+    <script type="module" src="movies.js"></script>
+    <script type="module" src="../../js/api.js"></script>
+    <script type="module" src="../../js/utils.js"></script>
+  </body>
+</html>

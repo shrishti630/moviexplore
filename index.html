@@ -1,0 +1,307 @@
+<!-- home/home.html -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Explorer</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-[#0b1220] text-gray-200 font-sans">
+    <!-- HEADER -->
+    <header
+      id="appHeader"
+      class="sticky top-0 z-[1000] bg-[rgba(11,18,32,0.7)] backdrop-blur-xl border-b border-white/10 transition-all duration-300"
+    >
+      <div
+        class="max-w-[1400px] mx-auto px-10 py-4 flex items-center justify-between"
+      >
+        <!-- Logo -->
+        <div class="flex items-center gap-3 cursor-pointer">
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-900 grid place-items-center font-bold"
+          >
+            MX
+          </div>
+          <span class="text-sm font-semibold">MovieXplore</span>
+        </div>
+
+        <!-- Nav -->
+        <nav class="flex gap-7 text-sm">
+          <a href="../home/home.html" class="hover:text-white relative group">
+            Home
+            <span
+              class="absolute left-0 -bottom-1 h-[2px] w-full bg-blue-600"
+            ></span>
+          </a>
+          <a
+            href="./pages/movies/movie.html"
+            class="text-gray-400 hover:text-white"
+            >Movies</a
+          >
+          <a
+            href="./pages/tvshows/tvshows.html"
+            class="text-gray-400 hover:text-white"
+            >TV Shows</a
+          >
+          <!-- <a href="../favorites/favorites.html" class="hover:text-white"
+            >Favorites</a
+          > -->
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section
+      class="grid grid-cols-1 lg:grid-cols-[520px_1fr] gap-8 lg:gap-12 px-5 sm:px-8 lg:px-10 py-8 lg:py-12 bg-gradient-to-r from-[#5F708B] via-[#f5f7fa] to-[#5F708B] text-gray-900"
+    >
+      <!-- Left -->
+      <div class="max-w-[520px]">
+        <h1 class="text-3xl sm:text-4xl font-semibold mb-3">
+          Discover Movies & TV Shows
+        </h1>
+
+        <p class="text-black-600 text-sm mb-4 leading-relaxed">
+          Your gateway to the world of cinema — discover trending releases,
+          critically acclaimed titles, and top-rated TV series.
+        </p>
+
+        <div class="flex flex-wrap gap-x-3 gap-y-1 text-xs text-black-500 mb-4">
+          <span>Movies</span>
+          <span>TV Series</span>
+          <span>Top-Rated</span>
+          <span>Trending Weekly</span>
+        </div>
+
+        <!-- search -->
+        <div class="flex gap-2">
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Search movies or TV shows"
+            class="flex-1 px-3 py-2 bg-[#141c2f] border border-[#223a5e] text-sm text-white outline-none placeholder-gray-400"
+          />
+          <button
+            id="searchBtn"
+            class="px-4 py-2 bg-[#223a5e] hover:bg-[#2c4a78] text-white text-sm"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+
+      <!-- Right -->
+      <div
+        class="relative overflow-hidden h-[240px] sm:h-[300px] lg:h-[380px] shadow-xl"
+      >
+        <!-- backdrop -->
+        <img
+          id="heroBackdrop"
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+
+        <!-- overlay -->
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-[#0b1220]/90 via-[#0b1220]/55 to-transparent"
+        ></div>
+
+        <!-- content -->
+        <div
+          class="relative z-10 h-full flex flex-col justify-end px-5 py-5 sm:px-6 sm:py-6 lg:px-8 lg:py-7"
+        >
+          <h2
+            id="heroTitle"
+            class="text-lg sm:text-xl lg:text-2xl font-semibold text-white mb-1"
+          ></h2>
+
+          <!-- meta (FIXED clipping) -->
+          <div
+            id="heroMeta"
+            class="text-xs text-gray-300 leading-relaxed mb-3"
+          ></div>
+
+          <p
+            id="heroOverview"
+            class="text-xs sm:text-sm text-gray-300 max-w-[460px] mb-5 line-clamp-2"
+          ></p>
+
+          <!-- buttons (FIXED padding visibility) -->
+          <div class="flex gap-2 mb-6">
+            <button
+              id="playTrailer"
+              class="px-4 py-2 bg-white text-black text-xs font-medium hover:bg-gray-200"
+            >
+              ▶ Play Trailer
+            </button>
+
+            <button
+              id="moreInfo"
+              class="px-4 py-2 bg-[#223a5e] text-white text-xs hover:bg-[#2c4a78]"
+            >
+              More Info
+            </button>
+          </div>
+
+          <!-- slider (desktop only) -->
+          <div
+            id="heroSlider"
+            class="hidden lg:flex gap-3 overflow-x-auto pb-1"
+          ></div>
+
+          <!-- dots (mobile / tablet) -->
+          <div id="heroDots" class="flex lg:hidden gap-2 mt-2"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENT -->
+    <main class="px-5 sm:px-8 lg:px-10 py-6 space-y-10">
+      <!-- Section -->
+      <section id="searchSection" class="hidden">
+        <div class="flex items-center gap-4 mb-4">
+          <h2 class="text-lg font-medium">Search Results</h2>
+
+          <button
+            id="viewAllSearch"
+            class="text-sm text-gray-400 hover:text-white"
+          >
+            View All →
+          </button>
+        </div>
+
+        <div id="searchResults" class="flex gap-4 overflow-x-auto pb-2"></div>
+      </section>
+
+      <section>
+        <div class="flex items-center gap-4 mb-4">
+          <h2 class="text-lg font-medium">Trending</h2>
+
+          <!-- Trending Toggle -->
+          <div
+            id="trendingToggle"
+            class="relative flex items-center bg-[#102a43] rounded-full p-1 w-[200px]"
+          >
+            <button
+              id="trendTodayBtn"
+              class="flex-1 z-10 py-1.5 text-xs font-medium rounded-full text-white"
+            >
+              Today
+            </button>
+
+            <button
+              id="trendWeekBtn"
+              class="flex-1 z-10 py-1.5 text-xs font-medium rounded-full text-white"
+            >
+              This Week
+            </button>
+
+            <span
+              id="trendingTogglePill"
+              class="absolute left-1 top-1 h-[calc(100%-8px)] w-[calc(50%-4px)] bg-white rounded-full transition-all duration-300"
+            ></span>
+          </div>
+        </div>
+
+        <div id="trending" class="flex gap-4 overflow-x-auto pb-2"></div>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-medium mb-4 flex items-center gap-4">
+          <span>Popular Movies</span>
+          <a
+            href="../popularmovies/popularmovies.html"
+            class="text-sm text-gray-400 hover:text-white"
+          >
+            View All →
+          </a>
+        </h2>
+
+        <div id="popularMovies" class="flex gap-5 overflow-x-auto pb-2"></div>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-medium mb-4 flex items-center gap-4">
+          <span>Popular TV Shows</span>
+          <a
+            href="../populartvshows/populartvshows.html"
+            class="text-sm text-gray-400 hover:text-white"
+          >
+            View All →
+          </a>
+        </h2>
+
+        <div id="popularTv" class="flex gap-5 overflow-x-auto pb-2"></div>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-medium mb-4">Top Rated Movies</h2>
+        <div id="topRated" class="flex gap-5 overflow-x-auto pb-2"></div>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-medium mb-4">Top Rated TV Shows</h2>
+        <div id="topRatedTv" class="flex gap-5 overflow-x-auto pb-2"></div>
+      </section>
+
+      <section>
+        <div class="flex items-center gap-4 mb-4">
+          <h2 class="text-lg font-medium">Free To Watch</h2>
+
+          <!-- Toggle -->
+          <div
+            id="freeToggle"
+            class="relative flex items-center bg-[#102a43] rounded-full p-1 w-[220px]"
+          >
+            <button
+              id="freeMoviesBtn"
+              class="flex-1 z-10 py-1.5 text-sm font-medium rounded-full text-white"
+            >
+              Movies
+            </button>
+
+            <button
+              id="freeTvBtn"
+              class="flex-1 z-10 py-1.5 text-sm font-medium rounded-full text-white"
+            >
+              TV
+            </button>
+
+            <!-- sliding pill -->
+            <span
+              id="freeTogglePill"
+              class="absolute left-1 top-1 h-[calc(100%-8px)] w-[calc(50%-4px)] bg-white rounded-full transition-all duration-300"
+            ></span>
+          </div>
+        </div>
+
+        <div id="freeToWatch" class="flex gap-5 overflow-x-auto pb-2"></div>
+      </section>
+    </main>
+    <!-- Trailer Modal -->
+    <div
+      id="trailerModal"
+      class="fixed inset-0 z-[2000] bg-black/80 hidden items-center justify-center"
+    >
+      <div class="relative w-full max-w-[900px] aspect-video">
+        <button
+          id="closeTrailer"
+          class="absolute -top-10 right-0 text-white text-sm opacity-70 hover:opacity-100"
+        >
+          Close ✕
+        </button>
+
+        <iframe
+          id="trailerFrame"
+          class="w-full h-full rounded-xl"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+
+    <script type="module" src="./js/home.js"></script>
+  </body>
+</html>

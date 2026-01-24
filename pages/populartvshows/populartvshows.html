@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Popular TV Shows</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-[#0b1220] text-gray-200 font-sans">
+    <!-- HEADER (same as Home) -->
+    <header
+      class="sticky top-0 z-50 bg-[rgba(11,18,32,0.9)] backdrop-blur-xl border-b border-white/10"
+    >
+      <div
+        class="max-w-[1400px] mx-auto px-10 py-4 flex items-center justify-between"
+      >
+        <!-- Logo -->
+        <div class="flex items-center gap-3 cursor-pointer">
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-900 grid place-items-center font-bold"
+          >
+            MX
+          </div>
+          <span class="text-sm font-semibold">MovieXplore</span>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex gap-7 text-sm">
+          <a href="../home/home.html" class="text-gray-400 hover:text-white">
+            Home
+          </a>
+
+          <a href="../movies/movie.html" class="text-gray-400 hover:text-white">
+            Movies
+          </a>
+
+          <a
+            href="../tvshows/tvshows.html"
+            class="text-gray-400 hover:text-white"
+          >
+            TV Shows
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <div class="mt-10 mb-10 flex items-center justify-between px-10">
+      <!-- Title -->
+      <h1 class="text-2xl font-semibold">Popular TV Shows</h1>
+
+      <!-- Search -->
+      <div class="flex gap-2 w-[360px]">
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Search movies or TV shows"
+          class="flex-1 px-3 py-2 bg-[#141c2f] border border-[#223a5e] text-sm text-white outline-none placeholder-gray-400 rounded-md"
+        />
+        <button
+          id="searchBtn"
+          class="px-4 py-2 bg-[#223a5e] hover:bg-[#2c4a78] text-white text-sm rounded-md"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+
+    <!-- TV GRID -->
+    <main
+      id="movies"
+      class="px-10 pb-16 grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-6"
+    ></main>
+
+    <script type="module" src="populartvshows.js"></script>
+  </body>
+</html>
