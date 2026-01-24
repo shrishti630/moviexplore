@@ -37,7 +37,7 @@ export function getMediaType(item) {
 
 export function goToDetail(item) {
   const type = getMediaType(item);
-  location.href = `../movieDetail/movieDetail.html?id=${item.id}&type=${type}`;
+  location.href = `/pages/movieDetail/movieDetail.html?id=${item.id}&type=${type}`;
 }
 
 /* ---------- cards ---------- */

@@ -64,7 +64,7 @@ function setHero(item) {
   heroOverview.textContent = item.overview;
 
   moreInfo.onclick = () =>
-    (location.href = `../movieDetail/movieDetail.html?id=${item.id}&type=${type}`);
+    (location.href = `/pages/movieDetail/movieDetail.html?id=${item.id}&type=${type}`);
 
   playTrailerBtn.onclick = () =>
     playTrailer({
