@@ -3,6 +3,8 @@
 MovieXplore is a frontend project built with **Vanilla JavaScript**, **Tailwind CSS**, and the **TMDB REST API**.  
 It focuses on clean architecture, reusable logic, and real-world API integration without using any frameworks.
 
+<sub>Live demo: https://themoviexplore.netlify.app/</sub>
+
 ---
 
 ## What This Project Shows
